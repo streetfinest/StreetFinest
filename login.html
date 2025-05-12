@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - StreetFinest</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f8f9fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .login-container img {
+      width: 100px;
+      margin-bottom: 10px;
+    }
+
+    .login-container h2 {
+      margin-bottom: 0.2rem;
+    }
+
+    .login-container p {
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    .login-container input {
+      width: 100%;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .login-container button,
+    .google-btn {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 1rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .login-btn {
+      background-color: #0c3c91;
+      color: white;
+    }
+
+    .google-btn {
+      background-color: #d93025;
+      color: white;
+    }
+
+    .extra-links {
+      margin-top: 0.8rem;
+      font-size: 0.85rem;
+    }
+
+    .extra-links a {
+      color: #0c3c91;
+      text-decoration: none;
+    }
+
+    .terms {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: #666;
+    }
+  </style>
+
+  <!-- Firebase SDKs -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+    import {
+      getAuth,
+      signInWithEmailAndPassword,
+      GoogleAuthProvider,
+      signInWithPopup
+    } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBF12CNg5zgcROAmkDKgc2HVkmRBZ2VyDM",
+      authDomain: "streetfinest-9360e.firebaseapp.com",
+      projectId: "streetfinest-9360e",
+      storageBucket: "streetfinest-9360e.firebasestorage.app",
+      messagingSenderId: "603098957105",
+      appId: "1:603098957105:web:d9de363d61e6e9245c1c10"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    window.addEventListener("DOMContentLoaded", () => {
+      document.getElementById('loginForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        try {
+          await signInWithEmailAndPassword(auth, email, password);
+          alert("Login successful!");
+          window.location.href = "dashboard.html";
+        } catch (error) {
+          alert("Login failed: " + error.message);
+        }
+      });
+
+      document.getElementById('googleBtn').addEventListener('click', async () => {
+        try {
+          await signInWithPopup(auth, provider);
+          window.location.href = "dashboard.html";
+        } catch (error) {
+          alert("Google Sign-in failed: " + error.message);
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="login-container">
+    <img src="streetfinest-logo.png" alt="StreetFinest Logo" />
+    <h2>Welcome Back</h2>
+    <p>Login to your account</p>
+
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <button type="submit" class="login-btn">Login</button>
+    </form>
+
+    <div id="googleBtn" class="google-btn">Sign in with Google</div>
+
+    <div class="extra-links">
+      <p><a href="#">Forgot Password?</a></p>
+      <p>Don't have an account? <a href="register.html">Register</a></p>
+    </div>
+    <p class="terms">By logging in, you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
+  </div>
+</body>
+</html>

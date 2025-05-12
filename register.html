@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create Account - StreetFinest</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .logo img {
+      max-width: 140px;
+      height: auto;
+      margin: 0 auto 15px;
+    }
+
+    h2 {
+      margin-bottom: 5px;
+      color: #111;
+    }
+
+    p.subtitle {
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    .register-btn {
+      background-color: #0d3e94;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      width: 100%;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .register-btn:hover {
+      background-color: #0a2f73;
+    }
+
+    .google-btn {
+      background-color: #d93025;
+      color: #fff;
+      padding: 12px;
+      margin-top: 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .google-btn:hover {
+      background-color: #b6281f;
+    }
+
+    .terms {
+      font-size: 12px;
+      color: #666;
+      margin-top: 15px;
+    }
+
+    .terms a {
+      color: #0d3e94;
+      text-decoration: none;
+    }
+
+    .terms a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        margin: 20px;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="logo">
+      <img src="streetfinest-logo.png" alt="StreetFinest Logo" />
+    </div>
+    <h2>Create Account</h2>
+    <p class="subtitle">Register to get started</p>
+
+    <form id="registerForm">
+      <input type="text" placeholder="Full Name" required />
+      <input type="text" placeholder="Username" required />
+      <input type="email" placeholder="Email" required />
+      <input type="tel" placeholder="Phone Number" required />
+      <input type="password" placeholder="Password" required />
+
+      <button type="submit" class="register-btn">Register</button>
+      <div class="google-btn" id="googleBtn">Register with Google</div>
+
+      <p class="terms">
+        By registering, you agree to our <a href="#">Terms and Policy</a>.
+      </p>
+      <p class="terms">
+        Already have an account? <a href="login.html">Login here</a>
+      </p>
+    </form>
+  </div>
+
+  <!-- Firebase JS SDK and your auth script can be linked below if needed -->
+
+</body>
+</html>
